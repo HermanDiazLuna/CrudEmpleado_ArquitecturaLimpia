@@ -2,6 +2,9 @@ package com.hdiaz.crud_empleados.infrastructure.entry_points.dtos;
 
 import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Mapper {
 
     public static Empleado empleadoRequestDTOtoEmpleado(EmpleadoRequestDTO empleadoRequestDTO){
@@ -18,4 +21,5 @@ public class Mapper {
                 .nombre(empleado.getNombre())
                 .build();
     }
+
 }

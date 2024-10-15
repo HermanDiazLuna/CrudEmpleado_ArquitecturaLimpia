@@ -5,7 +5,9 @@ import com.hdiaz.crud_empleados.domain.model.empleados.gateway.EmpleadoGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -24,6 +26,14 @@ public class EmpleadoAdapter implements EmpleadoGateway {
     public Empleado buscarEmpleadoPorId(Integer id) {
         Optional<EmpleadoEntity> findById = empleadoRepository.findById(id);
         return this.getEmpleado(findById.get());
+    }
+
+    @Override
+    public List<Empleado> buscarTodos() {
+        List<EmpleadoEntity> listaEmpleadosEntity = empleadoRepository.findAll();
+        return listaEmpleadosEntity.stream()
+                .map(this::getEmpleado)
+                .collect(Collectors.toList());
     }
 
     private EmpleadoEntity getEmpleadoEntity(Empleado empleado){

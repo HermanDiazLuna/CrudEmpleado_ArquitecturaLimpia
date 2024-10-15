@@ -4,6 +4,8 @@ import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 import com.hdiaz.crud_empleados.domain.model.empleados.gateway.EmpleadoGateway;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class EmpleadoUseCase {
 
@@ -15,5 +17,9 @@ public class EmpleadoUseCase {
 
     public Empleado buscarEmpleadoPorId(Integer id){
         return empleadoGateway.buscarEmpleadoPorId(id);
+    }
+
+    public List<Empleado> buscarTodosLosEmpleados(){
+        return empleadoGateway.buscarTodos();
     }
 }

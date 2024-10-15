@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "/api")
 @RequiredArgsConstructor
@@ -27,4 +30,11 @@ public class EmpleadoController {
         Empleado empleado = empleadoUseCase.buscarEmpleadoPorId(id);
         return ResponseEntity.ok().body(empleado);
     }
+
+    @GetMapping("buscar-todos")
+    public ResponseEntity<List<Empleado>> buscarTodosLosEmpleados() {
+        List<Empleado> empleadoList = empleadoUseCase.buscarTodosLosEmpleados();
+        return ResponseEntity.ok().body(empleadoList);
+    }
+
 }
