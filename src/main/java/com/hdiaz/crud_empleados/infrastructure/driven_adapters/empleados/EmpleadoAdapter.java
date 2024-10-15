@@ -5,6 +5,8 @@ import com.hdiaz.crud_empleados.domain.model.empleados.gateway.EmpleadoGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 @RequiredArgsConstructor
@@ -16,6 +18,12 @@ public class EmpleadoAdapter implements EmpleadoGateway {
     public Empleado guardarEmpleado(Empleado empleado) {
         EmpleadoEntity empleadoEntity = empleadoRepository.save(this.getEmpleadoEntity(empleado));
         return this.getEmpleado(empleadoEntity);
+    }
+
+    @Override
+    public Empleado buscarEmpleadoPorId(Integer id) {
+        Optional<EmpleadoEntity> findById = empleadoRepository.findById(id);
+        return this.getEmpleado(findById.get());
     }
 
     private EmpleadoEntity getEmpleadoEntity(Empleado empleado){

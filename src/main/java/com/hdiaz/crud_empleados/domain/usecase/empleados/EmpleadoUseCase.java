@@ -12,4 +12,8 @@ public class EmpleadoUseCase {
     public Empleado guardarEmpleado(Empleado empleado){
         return empleadoGateway.guardarEmpleado(empleado);
     }
+
+    public Empleado buscarEmpleadoPorId(Integer id){
+        return empleadoGateway.buscarEmpleadoPorId(id);
+    }
 }

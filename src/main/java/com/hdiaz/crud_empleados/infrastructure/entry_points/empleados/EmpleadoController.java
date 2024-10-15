@@ -7,10 +7,7 @@ import com.hdiaz.crud_empleados.infrastructure.entry_points.dtos.EmpleadoRespons
 import com.hdiaz.crud_empleados.infrastructure.entry_points.dtos.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -23,5 +20,11 @@ public class EmpleadoController {
     public ResponseEntity<EmpleadoResponseDTO> crearEmpleado(@RequestBody EmpleadoRequestDTO empleadoRequestDTO){
         Empleado empleado = empleadoUseCase.guardarEmpleado(Mapper.empleadoRequestDTOtoEmpleado(empleadoRequestDTO));
         return ResponseEntity.ok(Mapper.empleadoToEmpleadoResponseDTO(empleado));
+    }
+
+    @GetMapping("/buscar-por-id/{id}")
+    public ResponseEntity<Empleado> buscarPorIdEmpleado(@PathVariable("id") Integer id){
+        Empleado empleado = empleadoUseCase.buscarEmpleadoPorId(id);
+        return ResponseEntity.ok().body(empleado);
     }
 }
