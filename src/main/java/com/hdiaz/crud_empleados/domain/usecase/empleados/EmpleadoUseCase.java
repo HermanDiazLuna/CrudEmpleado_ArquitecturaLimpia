@@ -22,4 +22,8 @@ public class EmpleadoUseCase {
     public List<Empleado> buscarTodosLosEmpleados(){
         return empleadoGateway.buscarTodos();
     }
+
+    public Empleado actualizarEmpleado(Empleado empleado, Integer id){
+        return empleadoGateway.actualizarEmpleado(empleado, id);
+    }
 }

@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -37,4 +36,9 @@ public class EmpleadoController {
         return ResponseEntity.ok().body(empleadoList);
     }
 
+    @PutMapping("/actualizar-empleado/{id}")
+    public ResponseEntity<Empleado> actualizarEmpleado(@RequestBody Empleado empleado, @PathVariable Integer id){
+        Empleado empleadoActualizado = empleadoUseCase.actualizarEmpleado(empleado, id);
+        return ResponseEntity.ok().body(empleadoActualizado);
+    }
 }
