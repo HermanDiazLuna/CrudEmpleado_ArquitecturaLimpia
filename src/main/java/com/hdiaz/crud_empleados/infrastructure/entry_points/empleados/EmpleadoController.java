@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -25,20 +26,20 @@ public class EmpleadoController {
     }
 
     @GetMapping("/buscar-por-id/{id}")
-    public ResponseEntity<Empleado> buscarPorIdEmpleado(@PathVariable("id") Integer id){
+    public ResponseEntity<EmpleadoResponseDTO> buscarPorIdEmpleado(@PathVariable("id") Integer id){
         Empleado empleado = empleadoUseCase.buscarEmpleadoPorId(id);
-        return ResponseEntity.ok().body(empleado);
+        return ResponseEntity.ok().body(Mapper.empleadoToEmpleadoResponseDTO(empleado));
     }
 
     @GetMapping("buscar-todos")
-    public ResponseEntity<List<Empleado>> buscarTodosLosEmpleados() {
+    public ResponseEntity<List<EmpleadoResponseDTO>> buscarTodosLosEmpleados() {
         List<Empleado> empleadoList = empleadoUseCase.buscarTodosLosEmpleados();
-        return ResponseEntity.ok().body(empleadoList);
+        return ResponseEntity.ok().body(Mapper.empleadosToEmpleadosRequestDTO(empleadoList));
     }
 
     @PutMapping("/actualizar-empleado/{id}")
-    public ResponseEntity<Empleado> actualizarEmpleado(@RequestBody Empleado empleado, @PathVariable Integer id){
-        Empleado empleadoActualizado = empleadoUseCase.actualizarEmpleado(empleado, id);
-        return ResponseEntity.ok().body(empleadoActualizado);
+    public ResponseEntity<EmpleadoResponseDTO> actualizarEmpleado(@RequestBody EmpleadoRequestDTO empleadoRequestDTO, @PathVariable Integer id){
+        Empleado empleadoActualizado = empleadoUseCase.actualizarEmpleado(Mapper.empleadoRequestDTOtoEmpleado(empleadoRequestDTO), id);
+        return ResponseEntity.ok().body(Mapper.empleadoToEmpleadoResponseDTO(empleadoActualizado));
     }
 }

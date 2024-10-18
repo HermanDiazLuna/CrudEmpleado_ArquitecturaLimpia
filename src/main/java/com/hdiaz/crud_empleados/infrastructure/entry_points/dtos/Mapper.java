@@ -2,6 +2,7 @@ package com.hdiaz.crud_empleados.infrastructure.entry_points.dtos;
 
 import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,15 @@ public class Mapper {
                 .cedula(empleado.getCedula())
                 .nombre(empleado.getNombre())
                 .build();
+    }
+
+    public static List<EmpleadoResponseDTO> empleadosToEmpleadosRequestDTO(List<Empleado> empleadoList){
+        List<EmpleadoResponseDTO> empleadoResponseDTOList = new ArrayList<>();
+        for(Empleado empleado: empleadoList){
+            empleadoResponseDTOList.add(empleadoToEmpleadoResponseDTO(empleado));
+        }
+        return empleadoResponseDTOList;
+
     }
 
 }

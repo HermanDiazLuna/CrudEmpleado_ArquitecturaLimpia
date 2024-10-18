@@ -12,5 +12,5 @@ public interface EmpleadoGateway {
 
     List<Empleado> buscarTodos();
 
-    Empleado actualizarEmpleado(Empleado empleado, Integer id);
+    Empleado actualizarEmpleado(Empleado empleado);
 }

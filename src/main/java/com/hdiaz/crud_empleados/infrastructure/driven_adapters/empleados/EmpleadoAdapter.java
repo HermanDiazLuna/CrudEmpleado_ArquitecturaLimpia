@@ -37,19 +37,14 @@ public class EmpleadoAdapter implements EmpleadoGateway {
     }
 
     @Override
-    public Empleado actualizarEmpleado(Empleado empleado, Integer id) {
-        Optional<EmpleadoEntity> buscarPorId = empleadoRepository.findById(id);
-        EmpleadoEntity empleadoEntity = buscarPorId.get();
-        if(empleadoEntity != null){
-            empleadoEntity.setCedula(empleado.getCedula());
-            empleadoEntity.setNombre(empleado.getNombre());
-        }
-        EmpleadoEntity empleadoActualizado = empleadoRepository.save(empleadoEntity);
+    public Empleado actualizarEmpleado(Empleado empleado) {
+        EmpleadoEntity empleadoActualizado = empleadoRepository.save(this.getEmpleadoEntity(empleado));
         return this.getEmpleado(empleadoActualizado);
     }
 
     private EmpleadoEntity getEmpleadoEntity(Empleado empleado){
         return EmpleadoEntity.builder()
+                .id(empleado.getId())
                 .cedula(empleado.getCedula())
                 .nombre(empleado.getNombre())
                 .build();
