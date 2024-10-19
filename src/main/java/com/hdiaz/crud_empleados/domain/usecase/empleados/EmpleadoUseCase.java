@@ -2,11 +2,9 @@ package com.hdiaz.crud_empleados.domain.usecase.empleados;
 
 import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 import com.hdiaz.crud_empleados.domain.model.empleados.gateway.EmpleadoGateway;
-import com.hdiaz.crud_empleados.infrastructure.driven_adapters.empleados.EmpleadoEntity;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class EmpleadoUseCase {
