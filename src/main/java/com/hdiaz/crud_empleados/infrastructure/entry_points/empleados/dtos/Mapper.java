@@ -1,10 +1,9 @@
-package com.hdiaz.crud_empleados.infrastructure.entry_points.dtos;
+package com.hdiaz.crud_empleados.infrastructure.entry_points.empleados.dtos;
 
 import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Mapper {
 

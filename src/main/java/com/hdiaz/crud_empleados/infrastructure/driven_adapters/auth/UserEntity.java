@@ -37,7 +37,7 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.nombre;
+        return this.email;
     }
 
     @Override

@@ -14,9 +14,8 @@ public class UserAdapter implements AuthGateway {
     private final UserRepository userRepository;
 
     @Override
-    public AuthResponse register(User user) {
-        UserEntity userBD = userRepository.save(userEntity(user));
-        return null;
+    public UserEntity register(User user) {
+        return this.userRepository.save(userEntity(user));
     }
 
     @Override

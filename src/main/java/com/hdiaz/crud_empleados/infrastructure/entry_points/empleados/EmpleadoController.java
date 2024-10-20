@@ -2,9 +2,9 @@ package com.hdiaz.crud_empleados.infrastructure.entry_points.empleados;
 
 import com.hdiaz.crud_empleados.domain.model.empleados.Empleado;
 import com.hdiaz.crud_empleados.domain.usecase.empleados.EmpleadoUseCase;
-import com.hdiaz.crud_empleados.infrastructure.entry_points.dtos.EmpleadoRequestDTO;
-import com.hdiaz.crud_empleados.infrastructure.entry_points.dtos.EmpleadoResponseDTO;
-import com.hdiaz.crud_empleados.infrastructure.entry_points.dtos.Mapper;
+import com.hdiaz.crud_empleados.infrastructure.entry_points.empleados.dtos.EmpleadoRequestDTO;
+import com.hdiaz.crud_empleados.infrastructure.entry_points.empleados.dtos.EmpleadoResponseDTO;
+import com.hdiaz.crud_empleados.infrastructure.entry_points.empleados.dtos.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
