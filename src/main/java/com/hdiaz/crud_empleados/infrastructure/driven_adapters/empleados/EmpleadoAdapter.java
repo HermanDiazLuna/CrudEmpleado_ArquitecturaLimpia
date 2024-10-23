@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -24,8 +23,9 @@ public class EmpleadoAdapter implements EmpleadoGateway {
 
     @Override
     public Empleado buscarEmpleadoPorId(Integer id) {
-        Optional<EmpleadoEntity> findById = empleadoRepository.findById(id);
-        return this.getEmpleado(findById.get());
+        EmpleadoEntity empleadoDB = empleadoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Objeto no encontrado"));
+        return this.getEmpleado(empleadoDB);
     }
 
     @Override
