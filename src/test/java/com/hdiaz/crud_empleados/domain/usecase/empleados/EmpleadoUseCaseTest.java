@@ -46,4 +46,21 @@ class EmpleadoUseCaseTest {
         Assertions.assertEquals(1,empleadoGuardado.getId());
 
     }
+
+    @Test
+    public void buscarEmpleadoPorIdTest(){
+
+        Integer empleadoId = 1;
+        Mockito.when(empleadoGateway.buscarEmpleadoPorId(empleadoId)).thenReturn(empleadoDB);
+
+        Empleado resultado = empleadoUseCase.buscarEmpleadoPorId(empleadoId);
+
+        Assertions.assertNotNull(resultado);
+        Assertions.assertEquals(empleadoId, resultado.getId());
+        Assertions.assertEquals("12345", resultado.getCedula());
+        Assertions.assertEquals("Orlando Perez", resultado.getNombre());
+
+        Mockito.verify(empleadoGateway, Mockito.times(1)).buscarEmpleadoPorId(empleadoId);
+    }
+
 }
